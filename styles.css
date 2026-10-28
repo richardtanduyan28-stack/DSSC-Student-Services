@@ -154,7 +154,7 @@ body {
    4. Left Sidebar (DSSC Midnight Navy Theme) - Mobile-First Drawer Pattern
    -------------------------------------------------------------------------- */
 .sidebar {
-  width: var(--sidebar-width);
+  width: min(var(--sidebar-width), calc(100vw - 2rem));
   background-color: var(--sidebar-bg);
   color: #FFFFFF;
   display: flex;
@@ -163,6 +163,7 @@ body {
   top: 0;
   left: 0;
   height: 100vh;
+  height: 100dvh;
   z-index: 1000;
   transform: translateX(-100%); /* Hidden off-canvas drawer on mobile */
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -173,35 +174,6 @@ body {
 
 .sidebar.is-open {
   transform: translateX(0); /* Slide into view when active */
-}
-
-/* Sidebar Close Button (Mobile Only) */
-.sidebar-close-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: transparent;
-  border: none;
-  color: #94A3B8;
-  font-size: 1.75rem;
-  line-height: 1;
-  width: 36px;
-  height: 36px;
-  cursor: pointer;
-  border-radius: 6px;
-  margin-left: auto;
-  transition: color 0.15s ease, background-color 0.15s ease;
-}
-
-.sidebar-close-btn:hover {
-  color: #FFFFFF;
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-@media (min-width: 1100px) {
-  .sidebar-close-btn {
-    display: none; /* Hidden on desktop */
-  }
 }
 
 /* Brand Header */
@@ -581,21 +553,21 @@ body {
 .metric-grid,
 .summary-cards-row {
   display: grid;
-  grid-template-columns: 1fr; /* Mobile-First Baseline: 1 column */
+  grid-template-columns: minmax(0, 1fr);
   gap: 1rem;
 }
 
 @media (min-width: 768px) {
   .metric-grid,
   .summary-cards-row {
-    grid-template-columns: repeat(2, 1fr); /* Tablet: 2 columns */
+    grid-template-columns: repeat(2, minmax(0, 1fr)); /* Tablet: 2 columns */
   }
 }
 
 @media (min-width: 1024px) {
   .metric-grid,
   .summary-cards-row {
-    grid-template-columns: repeat(3, 1fr); /* Desktop: 3 columns */
+    grid-template-columns: repeat(3, minmax(0, 1fr)); /* Desktop: 3 columns */
   }
 }
 
@@ -2054,11 +2026,6 @@ body.admin-mode .admin-inline-actions {
     display: none !important;
   }
 
-  /* TWO-COLUMN DASHBOARD GRID MATCHING SCREENSHOT EXACTLY */
-  .dashboard-layout-grid {
-    grid-template-columns: 1fr 380px;
-    gap: 1.5rem;
-  }
 }
 
 @media (min-width: 1100px) and (max-width: 1299px) {
@@ -2067,9 +2034,33 @@ body.admin-mode .admin-inline-actions {
   }
 }
 
+@media (min-width: 1100px) and (max-width: 1199px) {
+  .summary-cards-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1280px) {
+  .dashboard-layout-grid {
+    grid-template-columns: minmax(0, 1fr) 380px;
+    gap: 1.5rem;
+  }
+}
+
+@media (min-width: 1280px) and (max-width: 1699px) {
+  .summary-cards-row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .metric-number {
+    font-size: 1.35rem;
+  }
+}
+
 @media (min-width: 1400px) {
   .dashboard-layout-grid {
     grid-template-columns: 1fr 410px;
+    gap: 1.5rem;
   }
 }
 
@@ -2297,6 +2288,12 @@ body.admin-mode .admin-inline-actions {
   }
 
   .login-title {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 300px) {
+  .metric-number {
     font-size: 1.25rem;
   }
 }

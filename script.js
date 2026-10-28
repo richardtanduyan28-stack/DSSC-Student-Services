@@ -109,7 +109,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // ------------------------------------------------------------------------
   const sidebar = document.getElementById("sidebar");
   const sidebarToggleBtn = document.getElementById("sidebarToggleBtn");
-  const sidebarCloseBtn = document.getElementById("sidebarCloseBtn");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const navLinks = document.querySelectorAll(".nav-link");
 
@@ -134,10 +133,6 @@ document.addEventListener("DOMContentLoaded", () => {
         openSidebar();
       }
     });
-  }
-
-  if (sidebarCloseBtn) {
-    sidebarCloseBtn.addEventListener("click", closeSidebar);
   }
 
   if (sidebarOverlay) {
