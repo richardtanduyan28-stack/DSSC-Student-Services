@@ -40,13 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (tabAdmin) tabAdmin.classList.add("active");
       if (loginIdLabel) loginIdLabel.textContent = "Employee / Staff ID";
       if (loginIdInput) loginIdInput.value = "ADMIN-2026-001";
-      if (loginSubmitBtn) loginSubmitBtn.innerHTML = `<span>Sign In as Administrator</span> &rarr;`;
+      if (loginSubmitBtn) loginSubmitBtn.textContent = "Sign In as Administrator";
     } else {
       if (tabAdmin) tabAdmin.classList.remove("active");
       if (tabStudent) tabStudent.classList.add("active");
       if (loginIdLabel) loginIdLabel.textContent = "Student ID";
       if (loginIdInput) loginIdInput.value = "2024-00124";
-      if (loginSubmitBtn) loginSubmitBtn.innerHTML = `<span>Sign In as Student</span> &rarr;`;
+      if (loginSubmitBtn) loginSubmitBtn.textContent = "Sign In as Student";
     }
   }
 
@@ -396,7 +396,6 @@ document.addEventListener("DOMContentLoaded", () => {
       newRow.innerHTML = `
         <td data-label="Request ID">
           <div class="req-id-cell">
-            <span class="row-type-icon" aria-hidden="true">📄</span>
             <span class="id-code">${generatedId}</span>
           </div>
         </td>
@@ -437,7 +436,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Display success alert
       if (successDetailText) {
-        successDetailText.innerHTML = `Your <strong>${escapeHtml(catVal)}</strong> has been recorded with ID <strong>${generatedId}</strong>.`;
+        successDetailText.textContent = `${catVal} · ${generatedId}`;
       }
       if (formSuccessMessage) {
         formSuccessMessage.hidden = false;
@@ -609,15 +608,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // 3. Switch summary metrics for Admin
       if (cardTitle1) cardTitle1.textContent = "Total Enrolled";
       if (cardMetric1) cardMetric1.textContent = "1,420";
-      if (cardDesc1) cardDesc1.textContent = "Officially enrolled college students";
+      if (cardDesc1) cardDesc1.textContent = "Enrolled students";
 
       if (cardTitle2) cardTitle2.textContent = "Pending Requests";
       if (metricPendingCount) metricPendingCount.textContent = "3";
-      if (cardDesc2) cardDesc2.textContent = "Awaiting approval or review";
+      if (cardDesc2) cardDesc2.textContent = "Awaiting review";
 
       if (cardTitle3) cardTitle3.textContent = "Processed Today";
       if (cardMetric3) cardMetric3.textContent = "18";
-      if (cardDesc3) cardDesc3.textContent = "Requests approved today";
+      if (cardDesc3) cardDesc3.textContent = "Approved today";
     } else {
       document.body.classList.remove("admin-mode");
 
@@ -634,15 +633,15 @@ document.addEventListener("DOMContentLoaded", () => {
       // 3. Student Summary Cards: Shows their Account, Request & Clearance Status!
       if (cardTitle1) cardTitle1.textContent = "Active Units";
       if (cardMetric1) cardMetric1.textContent = "21 Units";
-      if (cardDesc1) cardDesc1.textContent = "Enrollment: Approved (1st Sem)";
+      if (cardDesc1) cardDesc1.textContent = "Approved enrollment";
 
       if (cardTitle2) cardTitle2.textContent = "Pending Requests";
-      if (metricPendingCount) metricPendingCount.textContent = "3 Pending";
-      if (cardDesc2) cardDesc2.textContent = "3 Requests awaiting review";
+      if (metricPendingCount) metricPendingCount.textContent = "3";
+      if (cardDesc2) cardDesc2.textContent = "Awaiting review";
 
       if (cardTitle3) cardTitle3.textContent = "Clearance Deficiencies";
       if (cardMetric3) cardMetric3.textContent = "2 Deficiencies";
-      if (cardDesc3) cardDesc3.textContent = "Library & Dept requirements pending";
+      if (cardDesc3) cardDesc3.textContent = "Library and IT Lab";
     }
   }
 
@@ -744,10 +743,7 @@ document.addEventListener("DOMContentLoaded", () => {
     toast.className = `portal-toast portal-toast--${toastType}`;
     toast.setAttribute("role", "status");
     toast.setAttribute("aria-live", "polite");
-    toast.innerHTML = `
-      <span class="toast-icon" aria-hidden="true">${toastType === "success" ? "✔" : toastType === "error" ? "✖" : "ℹ"}</span>
-      <span class="toast-msg">${escapeHtml(message)}</span>
-    `;
+    toast.innerHTML = `<span class="toast-msg">${escapeHtml(message)}</span>`;
     document.body.appendChild(toast);
     // Trigger slide-in animation
     requestAnimationFrame(() => {
@@ -799,7 +795,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       if (notifUnreadCount) notifUnreadCount.textContent = "0";
       if (notificationBtn) notificationBtn.setAttribute("aria-label", "Notifications, 0 new alerts");
-      showToast("All notifications marked as read.", "success");
+      showToast("Notifications marked as read.", "success");
     });
   }
 
@@ -822,7 +818,7 @@ document.addEventListener("DOMContentLoaded", () => {
         notificationBtn.setAttribute("aria-expanded", "false");
         notificationBtn.setAttribute("aria-label", "Notifications, 0 new alerts");
       }
-      showToast("All notifications cleared.", "success");
+      showToast("Notifications cleared.", "success");
     });
   }
 
@@ -978,7 +974,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (modalPrintBtn) {
     modalPrintBtn.addEventListener("click", () => {
       closeModalById("academicStatusModal");
-      showToast("Preparing Academic Record for printing…", "info");
+      showToast("Preparing record for printing.", "info");
       setTimeout(() => window.print(), 600);
     });
   }
@@ -987,7 +983,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (printCorBtn) {
     printCorBtn.addEventListener("click", () => {
       closeModalById("clearanceModal");
-      showToast("Preparing Certificate of Registration for printing…", "info");
+      showToast("Preparing registration certificate.", "info");
       setTimeout(() => window.print(), 600);
     });
   }
@@ -996,7 +992,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (requestRecheckBtn) {
     requestRecheckBtn.addEventListener("click", () => {
       closeModalById("clearanceModal");
-      showToast("Clearance re-check request submitted successfully.", "success");
+      showToast("Re-check requested.", "success");
     });
   }
 
@@ -1004,7 +1000,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (saveSettingsBtn) {
     saveSettingsBtn.addEventListener("click", () => {
       closeModalById("settingsModal");
-      showToast("Settings saved successfully.", "success");
+      showToast("Settings saved.", "success");
     });
   }
 

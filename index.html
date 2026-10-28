@@ -3,12 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Davao del Sur State College (DSSC) Student Services Portal - Manage academic and administrative services in one place.">
-  <title>Student Services Dashboard - Davao del Sur State College</title>
-  <!-- Google Fonts: Inter for clean typography matching the design -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta name="description" content="DSSC Student Services">
+  <title>DSSC Student Services</title>
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -32,16 +28,16 @@
           </svg>
         </div>
         <h1 class="login-title">DSSC Portal Login</h1>
-        <p class="login-subtitle">Davao del Sur State College &bull; Student Services</p>
+        <p class="login-subtitle">Student Services</p>
       </div>
 
       <!-- Role Selection Tabs -->
       <div class="login-role-tabs">
         <button type="button" class="role-tab active" id="tabStudent" data-role="student">
-          <span>🎓</span> Student Portal
+          Student
         </button>
         <button type="button" class="role-tab" id="tabAdmin" data-role="admin">
-          <span>🛡️</span> Administrator
+          Administrator
         </button>
       </div>
 
@@ -66,15 +62,12 @@
         </button>
 
         <div class="quick-demo-logins">
-          <span class="demo-tag">One-Click Demo:</span>
+          <span class="demo-tag">Demo access:</span>
           <button type="button" class="btn-demo" id="quickStudentBtn">Demo Student</button>
           <button type="button" class="btn-demo" id="quickAdminBtn">Demo Admin</button>
         </div>
       </form>
 
-      <div class="login-footer">
-        <p>&copy; 2026 Davao del Sur State College &bull; Academic Laboratory Prototype</p>
-      </div>
     </div>
   </div>
 
@@ -147,7 +140,7 @@
                   <line x1="8" y1="12" x2="16" y2="12"/>
                 </svg>
               </span>
-              <span class="nav-text">Request a Service</span>
+              <span class="nav-text">New Request</span>
             </a>
           </li>
           <li class="nav-item">
@@ -187,21 +180,6 @@
         </ul>
       </nav>
 
-      <!-- Sidebar Bottom Slogan with Mountain Graphic -->
-      <div class="sidebar-bottom">
-        <div class="mountain-graphic" aria-hidden="true">
-          <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="mountain-svg">
-            <path d="M0 60L45 25L90 60Z" fill="#132B4A" opacity="0.6"/>
-            <path d="M60 60L125 12L190 60Z" fill="#1A3A63" opacity="0.9"/>
-            <path d="M125 12L140 28L120 28Z" fill="#38BDF8" opacity="0.4"/>
-            <path d="M130 60L170 30L200 60Z" fill="#132B4A" opacity="0.7"/>
-          </svg>
-        </div>
-        <div class="slogan-text">
-          <span>Learn &bull; Grow &bull; Serve</span>
-          <span class="slogan-school">DSSC</span>
-        </div>
-      </div>
     </aside>
 
     <!-- Mobile Drawer Overlay -->
@@ -221,8 +199,7 @@
           </button>
           
           <div class="header-greeting">
-            <h1 class="header-title">Student Services Dashboard</h1>
-            <p class="header-subtitle">Welcome back, manage your academic and administrative services in one place.</p>
+            <h1 class="header-title">Student Services</h1>
           </div>
         </div>
 
@@ -257,23 +234,20 @@
               </div>
               <ul class="notif-list" id="notifList">
                 <li class="notif-item unread">
-                  <span class="notif-icon" aria-hidden="true">📄</span>
                   <div class="notif-info">
-                    <p class="notif-msg">Your <strong>Transcript of Records</strong> request (DSSC-2026-0104) is received and pending evaluation.</p>
+                    <p class="notif-msg"><strong>Transcript request</strong> DSSC-2026-0104 received; pending review.</p>
                     <span class="notif-time">2 hours ago</span>
                   </div>
                 </li>
                 <li class="notif-item unread">
-                  <span class="notif-icon" aria-hidden="true">🪪</span>
                   <div class="notif-info">
-                    <p class="notif-msg">Certificate of Enrollment (DSSC-2026-0098) is currently processing at the Registrar's Office.</p>
+                    <p class="notif-msg"><strong>Enrollment certificate</strong> DSSC-2026-0098 is processing.</p>
                     <span class="notif-time">Yesterday</span>
                   </div>
                 </li>
                 <li class="notif-item unread">
-                  <span class="notif-icon" aria-hidden="true">⚠️</span>
                   <div class="notif-info">
-                    <p class="notif-msg">Reminder: Settle IT Department Laboratory clearance deficiency before Nov 15.</p>
+                    <p class="notif-msg">Clear the IT Lab deficiency by Nov 15.</p>
                     <span class="notif-time">2 days ago</span>
                   </div>
                 </li>
@@ -337,7 +311,7 @@
                 <div class="metric-content">
                   <h2 class="metric-title" id="cardTitle1">Active Units</h2>
                   <p class="metric-number" id="cardMetric1">21 Units</p>
-                  <p class="metric-subtitle" id="cardDesc1">Enrollment: Approved (1st Sem)</p>
+                  <p class="metric-subtitle" id="cardDesc1">Approved enrollment</p>
                 </div>
                 <div class="metric-arrow" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -357,7 +331,7 @@
                 <div class="metric-content">
                   <h2 class="metric-title" id="cardTitle2">Pending Requests</h2>
                   <p class="metric-number" id="metricPendingCount">3 Pending</p>
-                  <p class="metric-subtitle" id="cardDesc2">3 Requests awaiting review</p>
+                  <p class="metric-subtitle" id="cardDesc2">Awaiting review</p>
                 </div>
                 <div class="metric-arrow" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -378,7 +352,7 @@
                 <div class="metric-content">
                   <h2 class="metric-title" id="cardTitle3">Clearance Deficiencies</h2>
                   <p class="metric-number" id="cardMetric3">2 Deficiencies</p>
-                  <p class="metric-subtitle" id="cardDesc3">Library &amp; Dept requirements pending</p>
+                  <p class="metric-subtitle" id="cardDesc3">Library and IT Lab</p>
                 </div>
                 <div class="metric-arrow" aria-hidden="true">
                   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -391,9 +365,8 @@
 
             <!-- Admin Notice Banner (Visible only in Admin Mode) -->
             <div class="admin-notice-pill" id="adminNoticeBanner" hidden>
-              <span class="notice-shield" aria-hidden="true">🛡️</span>
               <div>
-                <strong>Administrator Mode Active:</strong> Review student requests in real-time. Use the <em>Approve</em> or <em>Process</em> buttons below to update records.
+                <strong>Administrator mode:</strong> Review and update requests below.
               </div>
             </div>
 
@@ -414,13 +387,12 @@
                   </div>
                   <div>
                     <h2 class="card-title-text" id="tableHeading">Recent Service Requests</h2>
-                    <p class="card-subtitle-text" id="tableSubtitle">Track the status of your service requests and view updates in real time.</p>
                   </div>
                 </div>
 
                 <div class="head-right-actions">
                   <button type="button" class="btn-link-action" id="viewAllBtn">
-                    <span>View All Requests</span>
+                    <span>View all</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                       <polyline points="9 18 15 12 9 6"/>
                     </svg>
@@ -445,7 +417,6 @@
                     <tr data-id="DSSC-2026-0104" data-type="Transcript of Records Request" data-date="Oct 24, 2026" data-status="Pending">
                       <td data-label="Request ID">
                         <div class="req-id-cell">
-                          <span class="row-type-icon" aria-hidden="true">📄</span>
                           <span class="id-code">DSSC-2026-0104</span>
                         </div>
                       </td>
@@ -479,7 +450,6 @@
                     <tr data-id="DSSC-2026-0098" data-type="Certificate of Enrollment" data-date="Oct 20, 2026" data-status="Processing">
                       <td data-label="Request ID">
                         <div class="req-id-cell">
-                          <span class="row-type-icon" aria-hidden="true">🪪</span>
                           <span class="id-code">DSSC-2026-0098</span>
                         </div>
                       </td>
@@ -511,7 +481,6 @@
                     <tr data-id="DSSC-2026-0082" data-type="Subject Overload Permit" data-date="Oct 12, 2026" data-status="Approved">
                       <td data-label="Request ID">
                         <div class="req-id-cell">
-                          <span class="row-type-icon" aria-hidden="true">📄</span>
                           <span class="id-code">DSSC-2026-0082</span>
                         </div>
                       </td>
@@ -540,7 +509,6 @@
                     <tr data-id="DSSC-2026-0075" data-type="Document Requisition" data-date="Oct 05, 2026" data-status="Approved">
                       <td data-label="Request ID">
                         <div class="req-id-cell">
-                          <span class="row-type-icon" aria-hidden="true">📄</span>
                           <span class="id-code">DSSC-2026-0075</span>
                         </div>
                       </td>
@@ -569,7 +537,6 @@
                     <tr data-id="DSSC-2026-0069" data-type="Certificate of Enrollment" data-date="Sep 28, 2026" data-status="Processing">
                       <td data-label="Request ID">
                         <div class="req-id-cell">
-                          <span class="row-type-icon" aria-hidden="true">🪪</span>
                           <span class="id-code">DSSC-2026-0069</span>
                         </div>
                       </td>
@@ -634,8 +601,7 @@
                   </svg>
                 </div>
                 <div>
-                  <h2 class="card-title-text">Request a Service</h2>
-                  <p class="card-subtitle-text">Submit a new service request and we'll process it as soon as possible.</p>
+                  <h2 class="card-title-text">New Request</h2>
                 </div>
               </div>
 
@@ -647,8 +613,8 @@
                   </svg>
                 </div>
                 <div class="alert-content">
-                  <p class="alert-heading">Request Submitted Successfully!</p>
-                  <p class="alert-sub" id="successDetailText">Your request has been filed for processing.</p>
+                  <p class="alert-heading">Request submitted</p>
+                  <p class="alert-sub" id="successDetailText">Request received.</p>
                 </div>
               </div>
 
@@ -658,14 +624,14 @@
                 <!-- Field 1: Service Category Dropdown -->
                 <div class="form-field-group">
                   <label for="serviceCategory" class="field-label" id="serviceCategory-label">
-                    Service Category <span class="asterisk" aria-hidden="true">*</span>
+                    Service <span class="asterisk" aria-hidden="true">*</span>
                   </label>
                   <div class="select-wrapper">
                     <select 
                       id="serviceCategory" 
                       name="serviceCategory" 
                       class="field-input field-select" 
-                      aria-describedby="serviceCategory-help categoryError" 
+                      aria-describedby="categoryError"
                       aria-required="true"
                       required>
                       <option value="">Select a service category</option>
@@ -675,7 +641,6 @@
                       <option value="Subject Overload Permit">Subject Overload Permit</option>
                     </select>
                   </div>
-                  <small class="field-help-text" id="serviceCategory-help">Choose the official DSSC service or document you require.</small>
                   <p class="error-msg" id="categoryError" aria-live="assertive" hidden></p>
                 </div>
 
@@ -690,11 +655,11 @@
                     rows="4" 
                     maxlength="500"
                     class="field-input field-textarea" 
-                    placeholder="Provide a brief description of your request (minimum 10 characters)..."
+                    placeholder="Describe your request (10 characters minimum)"
                     aria-describedby="requestDetails-help detailsError charCounter"
                     aria-required="true"
                     required></textarea>
-                  <small class="field-help-text" id="requestDetails-help">Provide clear academic reasons, subject codes, or purpose for processing.</small>
+                  <small class="field-help-text" id="requestDetails-help">Include the purpose or course codes.</small>
                   <div class="textarea-bottom-row">
                     <p class="error-msg" id="detailsError" aria-live="assertive" hidden></p>
                     <span class="char-count" id="charCounter" aria-live="polite">0/500</span>
@@ -719,7 +684,7 @@
                       <span class="chosen-filename" id="chosenFileName">No file chosen</span>
                     </label>
                   </div>
-                  <small class="file-help-text" id="supportingDoc-help">Accepted formats: PDF, JPG, PNG (Max size: 5MB)</small>
+                  <small class="file-help-text" id="supportingDoc-help">PDF, JPG, or PNG. Max 5 MB.</small>
                 </div>
 
                 <!-- Form Action Buttons -->
@@ -754,8 +719,7 @@
               </div>
               <div class="help-text-content">
                 <h3 class="help-heading">Need help?</h3>
-                <p class="help-desc">Make sure to provide complete and accurate information to avoid delays.</p>
-                <button type="button" class="btn-help-link" id="helpModalBtn">View Support FAQs &amp; Contacts &rarr;</button>
+                <button type="button" class="btn-help-link" id="helpModalBtn">FAQs &amp; contact</button>
               </div>
             </div>
 
@@ -768,12 +732,10 @@
       <!-- Portal Footer -->
       <footer class="app-footer">
         <div class="footer-left">
-          <span>Davao del Sur State College</span>
-          <span class="footer-divider">|</span>
-          <span>Student Services Portal</span>
+          <span>DSSC Student Services</span>
         </div>
         <div class="footer-right">
-          <span>&copy; 2026 DSSC. All rights reserved.</span>
+          <span>&copy; 2026 DSSC</span>
         </div>
       </footer>
 
@@ -835,7 +797,7 @@
       <div class="modal-header">
         <div class="modal-title-group">
           <span class="modal-badge-id">AY 2026-2027 &bull; 1st Semester</span>
-          <h2 class="modal-title" id="academicModalTitle">Academic &amp; Enrollment Status</h2>
+          <h2 class="modal-title" id="academicModalTitle">Enrollment</h2>
         </div>
         <button type="button" class="modal-close-btn" data-close-modal="academicStatusModal" aria-label="Close dialog">&times;</button>
       </div>
@@ -960,59 +922,49 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge-id" style="background-color: #FEF2F2; color: #DC2626;">2 Deficiencies Pending</span>
-          <h2 class="modal-title" id="clearanceModalTitle">Institutional Clearance Status</h2>
+          <h2 class="modal-title" id="clearanceModalTitle">Clearance</h2>
         </div>
         <button type="button" class="modal-close-btn" data-close-modal="clearanceModal" aria-label="Close dialog">&times;</button>
       </div>
       <div class="modal-body">
-        <p class="modal-intro-text">Track your clearances across academic and administrative departments for 1st Semester AY 2026-2027.</p>
-        
         <div class="clearance-checklist">
           <!-- Item 1: Registrar -->
           <div class="clearance-item status-in-progress">
-            <div class="clearance-icon" aria-hidden="true">⏳</div>
             <div class="clearance-details">
               <strong>Office of the University Registrar</strong>
-              <p>Form 137 / PSA Birth Certificate validation in process.</p>
+              <p>Form 137 and birth certificate validation.</p>
             </div>
             <span class="status-pill pill-processing"><span class="status-dot"></span> In Progress</span>
           </div>
 
           <!-- Item 2: Library -->
           <div class="clearance-item status-cleared">
-            <div class="clearance-icon" aria-hidden="true">✅</div>
             <div class="clearance-details">
               <strong>College Library Services</strong>
-              <p>No overdue book loans or library fines recorded.</p>
+              <p>No outstanding loans or fines.</p>
             </div>
             <span class="status-pill pill-approved"><span class="status-dot"></span> Cleared</span>
           </div>
 
           <!-- Item 3: SAS -->
           <div class="clearance-item status-cleared">
-            <div class="clearance-icon" aria-hidden="true">✅</div>
             <div class="clearance-details">
               <strong>Student Affairs &amp; Services (SAS)</strong>
-              <p>Institutional orientation &amp; student handbook compliance cleared.</p>
+              <p>Orientation and handbook requirements met.</p>
             </div>
             <span class="status-pill pill-approved"><span class="status-dot"></span> Cleared</span>
           </div>
 
           <!-- Item 4: IT Lab -->
           <div class="clearance-item status-deficient">
-            <div class="clearance-icon" aria-hidden="true">⚠️</div>
             <div class="clearance-details">
               <strong>IT Department Laboratories</strong>
-              <p>Deficiency: Return IT631 IoT Microcontroller kit to Lab 3 custodian.</p>
+              <p>Return the IT631 kit to the Lab 3 custodian.</p>
             </div>
             <span class="status-pill pill-pending" style="background-color: #FEE2E2; color: #B91C1C;"><span class="status-dot" style="background-color: #DC2626;"></span> Deficient</span>
           </div>
         </div>
 
-        <div class="clearance-notice-box">
-          <strong>Notice to Students:</strong> Please clear all pending laboratory equipment deficiencies prior to final exam clearance signing.
-        </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn-primary-modal" id="requestRecheckBtn">Request Clearance Re-check</button>
@@ -1028,8 +980,7 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge-id">Preferences &bull; DSSC Portal</span>
-          <h2 class="modal-title" id="settingsModalTitle">Portal &amp; Account Settings</h2>
+          <h2 class="modal-title" id="settingsModalTitle">Settings</h2>
         </div>
         <button type="button" class="modal-close-btn" data-close-modal="settingsModal" aria-label="Close dialog">&times;</button>
       </div>
@@ -1039,7 +990,7 @@
           <div class="setting-toggle-row">
             <div>
               <strong>SMS Request Status Alerts</strong>
-              <p class="setting-desc">Receive instant text updates when a request is approved.</p>
+              <p class="setting-desc">Request status by text.</p>
             </div>
             <label class="switch-toggle" for="smsToggle">
               <input type="checkbox" id="smsToggle" checked>
@@ -1050,7 +1001,7 @@
           <div class="setting-toggle-row">
             <div>
               <strong>Email Notifications</strong>
-              <p class="setting-desc">Send official copies and clearance digests to your student email.</p>
+              <p class="setting-desc">Updates sent to your student email.</p>
             </div>
             <label class="switch-toggle" for="emailToggle" style="margin-left:auto;">
               <input type="checkbox" id="emailToggle" checked>
@@ -1061,7 +1012,7 @@
           <div class="setting-toggle-row">
             <div>
               <strong>High Contrast Focus Indicators</strong>
-              <p class="setting-desc">Enhance button outlines for keyboard accessibility.</p>
+              <p class="setting-desc">Improve keyboard focus visibility.</p>
             </div>
             <label class="switch-toggle" for="contrastToggle" style="margin-left:auto;">
               <input type="checkbox" id="contrastToggle" checked>
@@ -1094,7 +1045,6 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge-id">Official Student Record</span>
           <h2 class="modal-title" id="profileModalTitle">Student Profile</h2>
         </div>
         <button type="button" class="modal-close-btn" data-close-modal="userProfileModal" aria-label="Close dialog">&times;</button>
@@ -1149,31 +1099,30 @@
     <div class="modal-dialog">
       <div class="modal-header">
         <div class="modal-title-group">
-          <span class="modal-badge-id">Support &amp; Assistance</span>
-          <h2 class="modal-title" id="helpModalTitle">Student Services Help Desk</h2>
+          <h2 class="modal-title" id="helpModalTitle">Help &amp; contact</h2>
         </div>
         <button type="button" class="modal-close-btn" data-close-modal="helpModal" aria-label="Close dialog">&times;</button>
       </div>
       <div class="modal-body">
         <div class="faq-accordion">
           <details class="faq-item" open>
-            <summary class="faq-summary">How long does Document Requisition take?</summary>
-            <p class="faq-answer">Certificates of Enrollment and Good Moral Characters are typically released within 1 to 2 working days. Official Transcripts of Records (TOR) take 3 to 5 working days upon document validation.</p>
+            <summary class="faq-summary">How long do requests take?</summary>
+            <p class="faq-answer">Enrollment certificates and good moral character certificates take 1–2 working days. Transcripts take 3–5 working days after validation.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-summary">How do I submit a Subject Overload request?</summary>
-            <p class="faq-answer">Subject overload permits are granted strictly to graduating students or those with special curriculum sequencing. Select 'Subject Overload Permit' on the Request Form and describe your subjects and reasons.</p>
+            <p class="faq-answer">Overload permits are for graduating students or approved curriculum exceptions. Select the permit and include your subjects and reason.</p>
           </details>
           <details class="faq-item">
             <summary class="faq-summary">What should I do if my clearance shows a deficiency?</summary>
-            <p class="faq-answer">Visit the indicated office (e.g., College Library or IT Lab 3 custodian) with your student ID to settle your loan, return equipment, or submit missing requirements.</p>
+            <p class="faq-answer">Contact the listed office to return items or submit missing requirements.</p>
           </details>
         </div>
 
         <div class="support-contact-box">
-          <strong>Need further assistance?</strong>
-          <p>Office of the University Registrar: <a href="mailto:registrar@dssc.edu.ph">registrar@dssc.edu.ph</a></p>
-          <p>Office Hours: Monday &ndash; Friday, 8:00 AM &ndash; 5:00 PM</p>
+          <strong>Registrar</strong>
+          <p><a href="mailto:registrar@dssc.edu.ph">registrar@dssc.edu.ph</a></p>
+          <p>Monday–Friday, 8:00 AM–5:00 PM</p>
         </div>
       </div>
       <div class="modal-footer">

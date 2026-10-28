@@ -18,7 +18,7 @@
   --primary-blue-light: #EFF6FF;
 
   /* Surface & Canvas Colors */
-  --page-bg: #F4F6FA;                /* Light crisp dashboard canvas */
+  --page-bg: #F8FAFC;
   --card-bg: #FFFFFF;                /* Pure white surface card */
   --border-light: #E2E8F0;           /* Subtle 1px boundary border */
   --border-card: #E5E9F0;
@@ -29,22 +29,6 @@
   --text-body: #334155;             /* Slate 700 readable body */
   --text-muted: #64748B;            /* Slate 500 secondary notes */
   --text-placeholder: #94A3B8;
-
-  /* Metric Card Themes */
-  --metric-blue-bg: #F0F7FF;
-  --metric-blue-border: #DBEAFE;
-  --metric-blue-bubble: #E0EFFF;
-  --metric-blue-text: #1E40AF;
-
-  --metric-yellow-bg: #FEFCE8;
-  --metric-yellow-border: #FEF08A;
-  --metric-yellow-bubble: #FEF3C7;
-  --metric-yellow-text: #854D0E;
-
-  --metric-red-bg: #FEF2F2;
-  --metric-red-border: #FECACA;
-  --metric-red-bubble: #FEE2E2;
-  --metric-red-text: #991B1B;
 
   /* Status Badge Colors */
   --status-pending-bg: #FEF3C7;
@@ -61,9 +45,7 @@
 
   /* Layout Constants */
   --sidebar-width: 260px;
-  --font-family-main: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 1px 2px rgba(15, 23, 42, 0.02);
-  --shadow-hover: 0 4px 12px rgba(15, 23, 42, 0.06);
+  --font-family-main: "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
 }
 
 /* --------------------------------------------------------------------------
@@ -184,7 +166,7 @@ body {
   z-index: 1000;
   transform: translateX(-100%); /* Hidden off-canvas drawer on mobile */
   transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
@@ -318,7 +300,7 @@ body {
   background-color: var(--primary-blue);
   color: #FFFFFF;
   font-weight: 600;
-  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.35);
+  box-shadow: none;
 }
 
 .nav-icon {
@@ -326,43 +308,6 @@ body {
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
-}
-
-/* Bottom Mountain Slogan Graphic */
-.sidebar-bottom {
-  margin-top: auto;
-  position: relative;
-  padding: 1.25rem 1.25rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: linear-gradient(180deg, rgba(10, 25, 47, 0) 0%, rgba(19, 43, 74, 0.4) 100%);
-  text-align: center;
-}
-
-.mountain-graphic {
-  width: 100%;
-  height: 48px;
-  margin-bottom: 0.5rem;
-  opacity: 0.8;
-}
-
-.mountain-svg {
-  width: 100%;
-  height: 100%;
-}
-
-.slogan-text {
-  font-size: 0.75rem;
-  color: #94A3B8;
-  letter-spacing: 0.5px;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-.slogan-school {
-  font-weight: 700;
-  color: #E2E8F0;
-  letter-spacing: 1px;
 }
 
 /* Mobile Overlay */
@@ -373,7 +318,6 @@ body {
   width: 100vw;
   height: 100vh;
   background-color: rgba(10, 25, 47, 0.6);
-  backdrop-filter: blur(2px);
   z-index: 999;
   opacity: 0;
   pointer-events: none;
@@ -427,6 +371,7 @@ body {
   border-radius: 8px;
   width: 40px;
   height: 40px;
+  flex-shrink: 0;
   font-size: 1.25rem;
   cursor: pointer;
   color: var(--text-heading);
@@ -441,15 +386,6 @@ body {
   font-weight: 700;
   color: var(--text-heading);
   line-height: 1.2;
-}
-
-.header-subtitle {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-  margin-top: 3px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .header-right {
@@ -664,19 +600,20 @@ body {
 }
 
 .metric-card {
-  border-radius: 14px;
+  border: 1px solid var(--border-card);
+  border-radius: 10px;
   padding: 1.25rem 1.35rem;
   display: flex;
   align-items: center;
   gap: 1rem;
   position: relative;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: var(--shadow-card);
+  box-shadow: none;
 }
 
 .metric-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-hover);
+  transform: none;
+  box-shadow: none;
 }
 
 .metric-icon-bubble {
@@ -722,34 +659,31 @@ body {
 
 /* Card 1: Active Units (Blue Theme) */
 .card-active-units {
-  background-color: var(--metric-blue-bg);
-  border: 1px solid var(--metric-blue-border);
+  background-color: var(--card-bg);
 }
 
 .bubble-blue {
-  background-color: var(--metric-blue-bubble);
+  background-color: transparent;
   color: var(--primary-blue);
 }
 
 /* Card 2: Pending Requests (Yellow/Cream Theme) */
 .card-pending-requests {
-  background-color: var(--metric-yellow-bg);
-  border: 1px solid var(--metric-yellow-border);
+  background-color: var(--card-bg);
 }
 
 .bubble-yellow {
-  background-color: var(--metric-yellow-bubble);
+  background-color: transparent;
   color: #D97706;
 }
 
 /* Card 3: Clearance Deficiencies (Red/Pink Theme) */
 .card-clearance {
-  background-color: var(--metric-red-bg);
-  border: 1px solid var(--metric-red-border);
+  background-color: var(--card-bg);
 }
 
 .bubble-red {
-  background-color: var(--metric-red-bubble);
+  background-color: transparent;
   color: #DC2626;
 }
 
@@ -770,18 +704,14 @@ body.admin-mode .admin-notice-pill {
   display: flex !important;
 }
 
-.notice-shield {
-  font-size: 1.25rem;
-}
-
 /* --------------------------------------------------------------------------
    8. Recent Service Requests Table Card
    -------------------------------------------------------------------------- */
 .content-card {
   background-color: var(--card-bg);
   border: 1px solid var(--border-card);
-  border-radius: 14px;
-  box-shadow: var(--shadow-card);
+  border-radius: 10px;
+  box-shadow: none;
 }
 
 .card-head-bar {
@@ -946,10 +876,6 @@ body.admin-mode .admin-notice-pill {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-}
-
-.row-type-icon {
-  font-size: 1rem;
 }
 
 .id-code {
@@ -1422,13 +1348,6 @@ body.admin-mode .admin-inline-actions {
   color: var(--text-heading);
 }
 
-.help-desc {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-top: 3px;
-  line-height: 1.4;
-}
-
 /* --------------------------------------------------------------------------
    11. Portal Footer
    -------------------------------------------------------------------------- */
@@ -1444,11 +1363,6 @@ body.admin-mode .admin-inline-actions {
   margin-top: auto;
 }
 
-.footer-divider {
-  margin: 0 0.5rem;
-  color: #CBD5E1;
-}
-
 /* --------------------------------------------------------------------------
    12. Modal: View Request Details
    -------------------------------------------------------------------------- */
@@ -1459,7 +1373,6 @@ body.admin-mode .admin-inline-actions {
   width: 100vw;
   height: 100vh;
   background-color: rgba(15, 23, 42, 0.5);
-  backdrop-filter: blur(3px);
   z-index: 2000;
   display: none; /* Hidden by default - prevents blocking page load! */
   align-items: center;
@@ -1477,17 +1390,12 @@ body.admin-mode .admin-inline-actions {
 
 .modal-dialog {
   background-color: #FFFFFF;
-  border-radius: 14px;
+  border-radius: 10px;
   width: 100%;
   max-width: 520px;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  box-shadow: none;
   overflow: hidden;
-  animation: modalFadeIn 0.2s ease-out;
-}
-
-@keyframes modalFadeIn {
-  from { opacity: 0; transform: scale(0.96); }
-  to { opacity: 1; transform: scale(1); }
+  animation: none;
 }
 
 .modal-header {
@@ -1621,11 +1529,6 @@ body.admin-mode .admin-inline-actions {
   margin-bottom: 0.5rem;
 }
 
-.modal-intro-text {
-  font-size: 0.85rem;
-  color: var(--text-muted);
-}
-
 /* Modal Info Header Strip */
 .modal-info-strip {
   background-color: #F8FAFC;
@@ -1737,11 +1640,6 @@ body.admin-mode .admin-inline-actions {
   background-color: #FFFFFF;
 }
 
-.clearance-icon {
-  font-size: 1.25rem;
-  flex-shrink: 0;
-}
-
 .clearance-details {
   flex: 1;
   min-width: 0;
@@ -1757,16 +1655,6 @@ body.admin-mode .admin-inline-actions {
   font-size: 0.8rem;
   color: var(--text-muted);
   margin-top: 1px;
-}
-
-.clearance-notice-box {
-  background-color: #FEF3C7;
-  border: 1px solid #FDE68A;
-  color: #92400E;
-  padding: 0.75rem 1rem;
-  border-radius: 8px;
-  font-size: 0.8rem;
-  line-height: 1.4;
 }
 
 /* Settings Form & Toggles */
@@ -1961,10 +1849,10 @@ body.admin-mode .admin-inline-actions {
   background-color: #FFFFFF;
   border: 1px solid var(--border-light);
   border-radius: 12px;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   z-index: 1500;
   overflow: hidden;
-  animation: modalFadeIn 0.2s ease-out;
+  animation: none;
 }
 
 .notif-head {
@@ -2012,11 +1900,6 @@ body.admin-mode .admin-inline-actions {
 
 .notif-item.unread {
   background-color: #F0F7FF;
-}
-
-.notif-icon {
-  font-size: 1.1rem;
-  flex-shrink: 0;
 }
 
 .notif-info {
@@ -2076,14 +1959,9 @@ body.admin-mode .admin-inline-actions {
 }
 
 /* Focus Pulse / Card Target Animation */
-@keyframes targetHighlight {
-  0% { box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.4); }
-  50% { box-shadow: 0 0 0 8px rgba(37, 99, 235, 0.2); }
-  100% { box-shadow: var(--shadow-card); }
-}
-
 .card-highlight-active {
-  animation: targetHighlight 1.5s ease-out;
+  outline: 2px solid var(--primary-blue);
+  outline-offset: -2px;
 }
 
 /* Toast Notification System */
@@ -2097,7 +1975,7 @@ body.admin-mode .admin-inline-actions {
   border-radius: 8px;
   font-size: 0.875rem;
   font-weight: 600;
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   display: flex;
   align-items: center;
   gap: 0.65rem;
@@ -2105,7 +1983,7 @@ body.admin-mode .admin-inline-actions {
   opacity: 0;
   transform: translateY(20px);
   transition: opacity 0.25s ease-out, transform 0.25s ease-out;
-  border-left: 4px solid var(--primary-blue);
+  border: 1px solid var(--border-light);
   max-width: 90vw;
   pointer-events: none;
 }
@@ -2116,11 +1994,6 @@ body.admin-mode .admin-inline-actions {
   pointer-events: auto;
 }
 
-.portal-toast--success { border-left-color: #22c55e; }
-.portal-toast--error   { border-left-color: #ef4444; }
-.portal-toast--info    { border-left-color: #3b82f6; }
-
-.portal-toast .toast-icon { font-size: 1rem; flex-shrink: 0; }
 .portal-toast .toast-msg  { line-height: 1.4; }
 
 @keyframes toastSlideUp {
@@ -2144,6 +2017,19 @@ body.admin-mode .admin-inline-actions {
 
   .profile-caret {
     display: flex;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+  .profile-details,
+  .profile-caret {
+    display: none;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 820px) {
+  .search-box {
+    width: 180px;
   }
 }
 
@@ -2175,6 +2061,12 @@ body.admin-mode .admin-inline-actions {
   }
 }
 
+@media (min-width: 1100px) and (max-width: 1299px) {
+  .search-box {
+    display: none;
+  }
+}
+
 @media (min-width: 1400px) {
   .dashboard-layout-grid {
     grid-template-columns: 1fr 410px;
@@ -2199,10 +2091,6 @@ body.admin-mode .admin-inline-actions {
 
   .header-title {
     font-size: 1.15rem;
-  }
-
-  .header-subtitle {
-    font-size: 0.775rem;
   }
 
   /* Dashboard canvas & cards */
@@ -2237,41 +2125,99 @@ body.admin-mode .admin-inline-actions {
     padding: 1.25rem 1rem;
   }
 
-  .footer-divider {
-    display: none;
-  }
-
   /* Modal responsiveness */
   .modal-dialog {
     max-width: 100%;
     margin: 0.5rem;
+    max-height: calc(100vh - 2rem);
+    max-height: calc(100dvh - 2rem);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-body {
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobile-toggle,
+  .notification-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .btn-logout,
+  .user-profile {
+    min-height: 44px;
+  }
+
+  .notification-popover {
+    position: fixed;
+    top: 7.75rem;
+    right: 1rem;
+    width: min(340px, calc(100vw - 2rem));
+    max-width: calc(100vw - 2rem);
+    max-height: calc(100vh - 8.5rem);
+    max-height: calc(100dvh - 8.5rem);
+    overflow-y: auto;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+  .top-header {
+    flex-wrap: wrap;
+  }
+
+  .header-left,
+  .header-right {
+    flex: 1 1 100%;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+  }
+
+  .search-box {
+    display: block;
+    order: 1;
+    flex: 1 1 180px;
+    width: auto;
   }
 }
 
 @media (max-width: 480px) {
-  /* Compact mobile header (360px - 414px viewports) */
+  /* Stack the header so the title and search remain usable on compact screens. */
   .top-header {
+    flex-wrap: wrap;
     padding: 0.65rem 0.75rem;
     gap: 0.5rem;
+  }
+
+  .header-left,
+  .header-right {
+    flex: 1 1 100%;
+  }
+
+  .header-right {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .search-box {
+    display: block;
+    order: 1;
+    flex: 1 0 100%;
+    width: auto;
   }
 
   .header-title {
     font-size: 1.05rem;
   }
 
-  .header-subtitle {
-    display: none; /* Hide subtitle on tiny viewports to keep header compact */
-  }
-
   .mobile-toggle {
-    width: 36px;
-    height: 36px;
     font-size: 1.15rem;
-  }
-
-  .notification-btn {
-    width: 36px;
-    height: 36px;
   }
 
   .btn-logout {
@@ -2348,7 +2294,7 @@ body.admin-mode .admin-inline-actions {
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: radial-gradient(circle at 50% 25%, #183354 0%, #081324 100%);
+  background: var(--sidebar-bg);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2363,12 +2309,12 @@ body.admin-mode .admin-inline-actions {
 
 .login-card {
   background-color: #FFFFFF;
-  border-radius: 18px;
+  border-radius: 12px;
   width: 100%;
   max-width: 440px;
   padding: 2.25rem 2rem;
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.45);
-  animation: modalFadeIn 0.25s ease-out;
+  box-shadow: none;
+  animation: none;
 }
 
 .login-header {
@@ -2425,7 +2371,7 @@ body.admin-mode .admin-inline-actions {
 .role-tab.active {
   background-color: #FFFFFF;
   color: var(--primary-blue);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  box-shadow: none;
 }
 
 .login-form {
@@ -2490,13 +2436,6 @@ body.admin-mode .admin-inline-actions {
   background-color: #EFF6FF;
   border-color: #BFDBFE;
   color: var(--primary-blue);
-}
-
-.login-footer {
-  text-align: center;
-  font-size: 0.75rem;
-  color: var(--text-muted);
-  margin-top: 1.25rem;
 }
 
 /* Logout Button in Header */
