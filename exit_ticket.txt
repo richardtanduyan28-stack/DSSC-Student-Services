@@ -1,0 +1,40 @@
+================================================================================
+IT631 - ADVANCED WEB APPLICATION DEVELOPMENT & HCI
+LABORATORY 1: DSSC STUDENT SERVICES DASHBOARD & RESPONSIVE PROTOTYPE
+INDIVIDUAL SUBMISSION EXIT TICKET
+================================================================================
+
+Student Name: [LastName], [FirstName]
+Course & Section: BSIT 3rd Year
+Institution: Davao del Sur State College (DSSC)
+Deliverable: exit_ticket.txt
+
+--------------------------------------------------------------------------------
+PROMPT 1: LAYOUT ARCHITECTURE
+Question: Between a top navigation and a sidebar shell, which pattern is better
+suited for an administrative DSSC portal managing enrollments, grades, and 
+faculty records? Why?
+--------------------------------------------------------------------------------
+Answer:
+For an administrative DSSC portal managing complex, multi-tiered workflows such as enrollments, grades, and faculty records, a persistent vertical sidebar shell is far superior to a top navigation bar. A sidebar efficiently accommodates extensive categorical links, section groupings, and status indicators without overcrowding horizontal viewport real estate or requiring fragile nested dropdowns. Moreover, dedicating the left boundary to vertical navigation maximizes available horizontal canvas width for dense academic data tables and complex administrative forms.
+
+--------------------------------------------------------------------------------
+PROMPT 2: RESPONSIVE TACTICS
+Question: When scaling down a 6-column data table to a 360px mobile viewport, 
+what specific design strategy would you apply to prevent table data from becoming 
+unreadable?
+--------------------------------------------------------------------------------
+Answer:
+When scaling a 6-column data table down to a 360px mobile screen, the most effective design strategy is transforming tabular rows into vertically stacked visual cards using CSS media queries paired with pseudo-elements that display column titles via data attributes (e.g., td::before { content: attr(data-label); font-weight: 600; }). This pattern prevents horizontal data clipping and eliminates tedious multi-directional scrolling by grouping each request's attributes into a clean, legible mobile-friendly card. Complementing this with an overflow-x: auto container guarantees that the entire HTML page layout never experiences horizontal blowout.
+
+--------------------------------------------------------------------------------
+PROMPT 3: ACCESSIBILITY & FOCUS VISIBILITY
+Question: Explain why removing browser outlines (outline: none) without providing 
+an alternate focus style harms usability, and specify what visual indicators you 
+used instead.
+--------------------------------------------------------------------------------
+Answer:
+Stripping away browser focus outlines using "outline: none" without providing an explicit replacement severely compromises usability for keyboard-only, screen-reader, and switch-device users who depend on visible focus indicators to know which control is currently active. To satisfy WCAG 2.1 AA Success Criterion 2.4.7 (Focus Visible), we implemented a distinct 3px solid vibrant blue outline with a 2px offset (:focus-visible { outline: 3px solid #2563EB; outline-offset: 2px; }) across all interactive controls, buttons, and form inputs. This ensures immediate visual clarity during keyboard Tab audits without causing unwanted focus rings for mouse or touch users.
+
+================================================================================
+

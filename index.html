@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Davao del Sur State College (DSSC) Student Services Portal - Manage academic and administrative services in one place.">
+  <title>Student Services Dashboard - Davao del Sur State College</title>
+  <!-- Google Fonts: Inter for clean typography matching the design -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Accessible Skip-to-Content Link for Keyboard Navigation (WCAG 2.4.1) -->
+  <a href="#mainContent" class="skip-link">Skip to main content</a>
+
+  <!-- ======================================================================
+       0. DSSC PORTAL LOGIN SCREEN (Initial Entry Gateway / Switch Role)
+       ====================================================================== -->
+  <div class="login-wrapper" id="loginScreen" hidden style="display: none;">
+    <div class="login-card">
+      <div class="login-header">
+        <div class="login-logo-seal" aria-hidden="true">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dssc-seal-svg">
+            <circle cx="24" cy="24" r="22" stroke="#E2E8F0" stroke-width="2" fill="#0A192F"/>
+            <circle cx="24" cy="24" r="18" stroke="#38BDF8" stroke-dasharray="2 2" stroke-width="1.5"/>
+            <path d="M24 10L14 16V26C14 31.5 18.3 36.7 24 38C29.7 36.7 34 31.5 34 26V16L24 10Z" fill="#1E40AF" stroke="#60A5FA" stroke-width="1.5"/>
+            <path d="M19 23L24 20L29 23V27C29 29.5 27 31.5 24 32C21 31.5 19 29.5 19 27V23Z" fill="#FBBF24"/>
+            <path d="M24 14V19" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+            <circle cx="24" cy="24" r="2" fill="#FFFFFF"/>
+          </svg>
+        </div>
+        <h1 class="login-title">DSSC Portal Login</h1>
+        <p class="login-subtitle">Davao del Sur State College &bull; Student Services</p>
+      </div>
+
+      <!-- Role Selection Tabs -->
+      <div class="login-role-tabs">
+        <button type="button" class="role-tab active" id="tabStudent" data-role="student">
+          <span>🎓</span> Student Portal
+        </button>
+        <button type="button" class="role-tab" id="tabAdmin" data-role="admin">
+          <span>🛡️</span> Administrator
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form id="loginForm" class="login-form">
+        <div class="form-field-group">
+          <label for="loginId" class="field-label" id="loginIdLabel">Student ID</label>
+          <input type="text" id="loginId" class="field-input" value="2024-00124" required placeholder="Enter ID number">
+        </div>
+        
+        <div class="form-field-group">
+          <label for="loginPassword" class="field-label">Password</label>
+          <input type="password" id="loginPassword" class="field-input" value="password123" required placeholder="Enter password">
+        </div>
+
+        <button type="submit" class="btn-login-submit" id="loginSubmitBtn">
+          <span>Sign In to Portal</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+
+        <div class="quick-demo-logins">
+          <span class="demo-tag">One-Click Demo:</span>
+          <button type="button" class="btn-demo" id="quickStudentBtn">Demo Student</button>
+          <button type="button" class="btn-demo" id="quickAdminBtn">Demo Admin</button>
+        </div>
+      </form>
+
+      <div class="login-footer">
+        <p>&copy; 2026 Davao del Sur State College &bull; Academic Laboratory Prototype</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Dashboard App Layout (Active Student Services Canvas) -->
+  <div class="app-layout" id="appLayout" style="display: flex;">
+
+    <!-- ======================================================================
+         1. LEFT SIDEBAR (DSSC Dark Navy Branding)
+         ====================================================================== -->
+    <aside class="sidebar" id="sidebar" aria-label="Main Navigation">
+      
+      <!-- Brand Header -->
+      <div class="sidebar-header">
+        <div class="sidebar-brand-group">
+          <!-- DSSC Seal Logo SVG -->
+          <div class="brand-logo" aria-hidden="true">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg" class="dssc-seal-svg">
+              <circle cx="24" cy="24" r="22" stroke="#E2E8F0" stroke-width="2" fill="#0A192F"/>
+              <circle cx="24" cy="24" r="18" stroke="#38BDF8" stroke-dasharray="2 2" stroke-width="1.5"/>
+              <path d="M24 10L14 16V26C14 31.5 18.3 36.7 24 38C29.7 36.7 34 31.5 34 26V16L24 10Z" fill="#1E40AF" stroke="#60A5FA" stroke-width="1.5"/>
+              <path d="M19 23L24 20L29 23V27C29 29.5 27 31.5 24 32C21 31.5 19 29.5 19 27V23Z" fill="#FBBF24"/>
+              <path d="M24 14V19" stroke="#FFFFFF" stroke-width="1.5" stroke-linecap="round"/>
+              <circle cx="24" cy="24" r="2" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <div class="brand-titles">
+            <span class="brand-acronym">DSSC</span>
+            <span class="brand-college">Davao del Sur State College</span>
+            <span class="brand-portal">STUDENT SERVICES PORTAL</span>
+          </div>
+        </div>
+        <!-- Mobile Drawer Close Button -->
+        <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="Close navigation menu">&times;</button>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="sidebar-nav">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="#dashboard" class="nav-link active" id="navDashboard" aria-current="page">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </span>
+              <span class="nav-text">Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#recent-requests-card" class="nav-link" id="navRequests">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <line x1="16" y1="13" x2="8" y2="13"/>
+                  <line x1="16" y1="17" x2="8" y2="17"/>
+                  <polyline points="10 9 9 9 8 9"/>
+                </svg>
+              </span>
+              <span class="nav-text" id="navLabelRequests">My Requests</span>
+            </a>
+          </li>
+          <li class="nav-item" id="navItemRequestService">
+            <a href="#service-form-card" class="nav-link" id="navRequestService">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <line x1="12" y1="8" x2="12" y2="16"/>
+                  <line x1="8" y1="12" x2="16" y2="12"/>
+                </svg>
+              </span>
+              <span class="nav-text">Request a Service</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#academic-status" class="nav-link" id="navAcademic">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                </svg>
+              </span>
+              <span class="nav-text">Academic Status</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#clearance" class="nav-link" id="navClearance">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                  <line x1="12" y1="8" x2="12" y2="12"/>
+                  <line x1="12" y1="16" x2="12.01" y2="16"/>
+                </svg>
+              </span>
+              <span class="nav-text">Clearance</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="#settings" class="nav-link" id="navSettings">
+              <span class="nav-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"/>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+                </svg>
+              </span>
+              <span class="nav-text">Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Bottom Slogan with Mountain Graphic -->
+      <div class="sidebar-bottom">
+        <div class="mountain-graphic" aria-hidden="true">
+          <svg viewBox="0 0 200 60" fill="none" xmlns="http://www.w3.org/2000/svg" class="mountain-svg">
+            <path d="M0 60L45 25L90 60Z" fill="#132B4A" opacity="0.6"/>
+            <path d="M60 60L125 12L190 60Z" fill="#1A3A63" opacity="0.9"/>
+            <path d="M125 12L140 28L120 28Z" fill="#38BDF8" opacity="0.4"/>
+            <path d="M130 60L170 30L200 60Z" fill="#132B4A" opacity="0.7"/>
+          </svg>
+        </div>
+        <div class="slogan-text">
+          <span>Learn &bull; Grow &bull; Serve</span>
+          <span class="slogan-school">DSSC</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile Drawer Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-hidden="true"></div>
+
+    <!-- ======================================================================
+         2. MAIN CONTENT AREA
+         ====================================================================== -->
+    <div class="main-wrapper">
+
+      <!-- Top Header Bar -->
+      <header class="top-header">
+        <div class="header-left">
+          <!-- Mobile Hamburger Toggle -->
+          <button type="button" class="mobile-toggle" id="sidebarToggleBtn" aria-label="Toggle navigation menu" aria-expanded="false">
+            <span class="toggle-icon" aria-hidden="true">☰</span>
+          </button>
+          
+          <div class="header-greeting">
+            <h1 class="header-title">Student Services Dashboard</h1>
+            <p class="header-subtitle">Welcome back, manage your academic and administrative services in one place.</p>
+          </div>
+        </div>
+
+        <div class="header-right">
+          <!-- Quick Search Bar with Explicit Accessible Label -->
+          <div class="search-box">
+            <label for="tableSearchInput" class="sr-only">Search services and requests</label>
+            <span class="search-icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"/>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </span>
+            <input type="text" class="search-input" id="tableSearchInput" placeholder="Search services, requests..." aria-label="Search requests">
+          </div>
+
+          <!-- Notification Bell with Interactive Popover -->
+          <div class="notification-container">
+            <button type="button" class="notification-btn" id="notificationBtn" aria-label="Notifications, 3 new alerts" aria-expanded="false" aria-haspopup="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+              <span class="notification-bubble" id="notifBadge">3</span>
+            </button>
+
+            <!-- Notification Popover Menu -->
+            <div class="notification-popover" id="notificationPopover" style="display: none;" role="region" aria-label="Notifications Panel">
+              <div class="notif-head">
+                <span class="notif-title">Notifications (<span id="notifUnreadCount">3</span>)</span>
+                <button type="button" class="btn-notif-action" id="markAllReadBtn">Mark all read</button>
+              </div>
+              <ul class="notif-list" id="notifList">
+                <li class="notif-item unread">
+                  <span class="notif-icon" aria-hidden="true">📄</span>
+                  <div class="notif-info">
+                    <p class="notif-msg">Your <strong>Transcript of Records</strong> request (DSSC-2026-0104) is received and pending evaluation.</p>
+                    <span class="notif-time">2 hours ago</span>
+                  </div>
+                </li>
+                <li class="notif-item unread">
+                  <span class="notif-icon" aria-hidden="true">🪪</span>
+                  <div class="notif-info">
+                    <p class="notif-msg">Certificate of Enrollment (DSSC-2026-0098) is currently processing at the Registrar's Office.</p>
+                    <span class="notif-time">Yesterday</span>
+                  </div>
+                </li>
+                <li class="notif-item unread">
+                  <span class="notif-icon" aria-hidden="true">⚠️</span>
+                  <div class="notif-info">
+                    <p class="notif-msg">Reminder: Settle IT Department Laboratory clearance deficiency before Nov 15.</p>
+                    <span class="notif-time">2 days ago</span>
+                  </div>
+                </li>
+              </ul>
+              <div class="notif-foot">
+                <button type="button" class="btn-clear-notifs" id="clearNotifsBtn">Clear Notifications</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Logout Button -->
+          <button type="button" class="btn-logout" id="logoutBtn" aria-label="Sign out of portal">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+              <polyline points="16 17 21 12 16 7"/>
+              <line x1="21" y1="12" x2="9" y2="12"/>
+            </svg>
+            <span>Log Out</span>
+          </button>
+
+          <!-- Student Profile Widget -->
+          <div class="user-profile" id="userProfile" tabindex="0" role="button" aria-label="User Profile">
+            <div class="avatar-circle" id="profileAvatar" aria-hidden="true">JS</div>
+            <div class="profile-details">
+              <span class="profile-name" id="profileName">Juan Dela Cruz Santos</span>
+              <span class="profile-role" id="profileMeta">BSIT - 3rd Year</span>
+            </div>
+            <span class="profile-caret" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="6 9 12 15 18 9"/>
+              </svg>
+            </span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Canvas (Semantic Main Landmark with Anchor for Skip-Link) -->
+      <main class="dashboard-canvas" id="mainContent">
+
+        <!-- ==================================================================
+             TWO-COLUMN GRID CONTAINER MATCHING EXACT SCREENSHOT
+             ================================================================== -->
+        <div class="dashboard-layout-grid">
+
+          <!-- ----------------------------------------------------------------
+               LEFT COLUMN (Summary Cards & Recent Requests Table)
+               ---------------------------------------------------------------- -->
+          <div class="dashboard-main-col">
+
+            <!-- Summary Cards Row (CSS Grid Baseline Snippet: 1fr -> 2col @ 768px -> 3col @ 1024px) -->
+            <section class="metric-grid summary-cards-row" aria-label="Dashboard Metrics">
+
+              <!-- Card 1: Active Units (Click to view Academic Status & Enrolled Subjects) -->
+              <article class="metric-card card-active-units" id="summaryCard1" tabindex="0" role="button" aria-label="View Active Units and Enrolled Courses">
+                <div class="metric-icon-bubble bubble-blue" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                    <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+                  </svg>
+                </div>
+                <div class="metric-content">
+                  <h2 class="metric-title" id="cardTitle1">Active Units</h2>
+                  <p class="metric-number" id="cardMetric1">21 Units</p>
+                  <p class="metric-subtitle" id="cardDesc1">Enrollment: Approved (1st Sem)</p>
+                </div>
+                <div class="metric-arrow" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </div>
+              </article>
+
+              <!-- Card 2: Pending Requests (Click to filter table to pending requests) -->
+              <article class="metric-card card-pending-requests" id="summaryCard2" tabindex="0" role="button" aria-label="Filter table by Pending Requests">
+                <div class="metric-icon-bubble bubble-yellow" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/>
+                    <polyline points="12 6 12 12 16 14"/>
+                  </svg>
+                </div>
+                <div class="metric-content">
+                  <h2 class="metric-title" id="cardTitle2">Pending Requests</h2>
+                  <p class="metric-number" id="metricPendingCount">3 Pending</p>
+                  <p class="metric-subtitle" id="cardDesc2">3 Requests awaiting review</p>
+                </div>
+                <div class="metric-arrow" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </div>
+              </article>
+
+              <!-- Card 3: Clearance Deficiencies (Click to view clearance checklist) -->
+              <article class="metric-card card-clearance" id="summaryCard3" tabindex="0" role="button" aria-label="View Clearance Deficiencies and Status">
+                <div class="metric-icon-bubble bubble-red" aria-hidden="true">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                </div>
+                <div class="metric-content">
+                  <h2 class="metric-title" id="cardTitle3">Clearance Deficiencies</h2>
+                  <p class="metric-number" id="cardMetric3">2 Deficiencies</p>
+                  <p class="metric-subtitle" id="cardDesc3">Library &amp; Dept requirements pending</p>
+                </div>
+                <div class="metric-arrow" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                  </svg>
+                </div>
+              </article>
+
+            </section>
+
+            <!-- Admin Notice Banner (Visible only in Admin Mode) -->
+            <div class="admin-notice-pill" id="adminNoticeBanner" hidden>
+              <span class="notice-shield" aria-hidden="true">🛡️</span>
+              <div>
+                <strong>Administrator Mode Active:</strong> Review student requests in real-time. Use the <em>Approve</em> or <em>Process</em> buttons below to update records.
+              </div>
+            </div>
+
+            <!-- Recent Service Requests Table Card -->
+            <section class="content-card requests-table-card" id="recent-requests-card" aria-labelledby="tableHeading">
+              
+              <!-- Card Header -->
+              <div class="card-head-bar">
+                <div class="head-left-title">
+                  <div class="title-icon-box" aria-hidden="true">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                      <polyline points="14 2 14 8 20 8"/>
+                      <line x1="16" y1="13" x2="8" y2="13"/>
+                      <line x1="16" y1="17" x2="8" y2="17"/>
+                      <polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h2 class="card-title-text" id="tableHeading">Recent Service Requests</h2>
+                    <p class="card-subtitle-text" id="tableSubtitle">Track the status of your service requests and view updates in real time.</p>
+                  </div>
+                </div>
+
+                <div class="head-right-actions">
+                  <button type="button" class="btn-link-action" id="viewAllBtn">
+                    <span>View All Requests</span>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Table Wrapper (Horizontal touch scrolling for mobile) -->
+              <div class="table-container" tabindex="0" role="region" aria-label="Service Requests Table">
+                <table class="requests-table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Request ID</th>
+                      <th scope="col">Service Type</th>
+                      <th scope="col">Date Filed</th>
+                      <th scope="col">Status</th>
+                      <th scope="col">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody id="requestsTableBody">
+                    <!-- Row 1: Pending -->
+                    <tr data-id="DSSC-2026-0104" data-type="Transcript of Records Request" data-date="Oct 24, 2026" data-status="Pending">
+                      <td data-label="Request ID">
+                        <div class="req-id-cell">
+                          <span class="row-type-icon" aria-hidden="true">📄</span>
+                          <span class="id-code">DSSC-2026-0104</span>
+                        </div>
+                      </td>
+                      <td class="service-name" data-label="Service Type">Transcript of Records Request</td>
+                      <td class="date-cell" data-label="Date Filed">Oct 24, 2026</td>
+                      <td data-label="Status">
+                        <span class="status-pill pill-pending">
+                          <span class="status-dot"></span> Pending
+                        </span>
+                      </td>
+                      <td data-label="Actions">
+                        <div class="row-action-cell">
+                          <button type="button" class="btn-row-view" aria-label="View request DSSC-2026-0104">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>View</span>
+                            <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                          </button>
+                          <!-- Admin Quick Action Buttons (Revealed in Admin Mode) -->
+                          <div class="admin-inline-actions" hidden>
+                            <button type="button" class="btn-adm-approve" title="Approve this request">Approve</button>
+                            <button type="button" class="btn-adm-process" title="Mark as processing">Process</button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Row 2: Processing -->
+                    <tr data-id="DSSC-2026-0098" data-type="Certificate of Enrollment" data-date="Oct 20, 2026" data-status="Processing">
+                      <td data-label="Request ID">
+                        <div class="req-id-cell">
+                          <span class="row-type-icon" aria-hidden="true">🪪</span>
+                          <span class="id-code">DSSC-2026-0098</span>
+                        </div>
+                      </td>
+                      <td class="service-name" data-label="Service Type">Certificate of Enrollment</td>
+                      <td class="date-cell" data-label="Date Filed">Oct 20, 2026</td>
+                      <td data-label="Status">
+                        <span class="status-pill pill-processing">
+                          <span class="status-dot"></span> Processing
+                        </span>
+                      </td>
+                      <td data-label="Actions">
+                        <div class="row-action-cell">
+                          <button type="button" class="btn-row-view" aria-label="View request DSSC-2026-0098">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>View</span>
+                            <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                          </button>
+                          <div class="admin-inline-actions" hidden>
+                            <button type="button" class="btn-adm-approve" title="Approve this request">Approve</button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Row 3: Approved -->
+                    <tr data-id="DSSC-2026-0082" data-type="Subject Overload Permit" data-date="Oct 12, 2026" data-status="Approved">
+                      <td data-label="Request ID">
+                        <div class="req-id-cell">
+                          <span class="row-type-icon" aria-hidden="true">📄</span>
+                          <span class="id-code">DSSC-2026-0082</span>
+                        </div>
+                      </td>
+                      <td class="service-name" data-label="Service Type">Subject Overload Permit</td>
+                      <td class="date-cell" data-label="Date Filed">Oct 12, 2026</td>
+                      <td data-label="Status">
+                        <span class="status-pill pill-approved">
+                          <span class="status-dot"></span> Approved
+                        </span>
+                      </td>
+                      <td data-label="Actions">
+                        <div class="row-action-cell">
+                          <button type="button" class="btn-row-view" aria-label="View request DSSC-2026-0082">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>View</span>
+                            <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Row 4: Approved -->
+                    <tr data-id="DSSC-2026-0075" data-type="Document Requisition" data-date="Oct 05, 2026" data-status="Approved">
+                      <td data-label="Request ID">
+                        <div class="req-id-cell">
+                          <span class="row-type-icon" aria-hidden="true">📄</span>
+                          <span class="id-code">DSSC-2026-0075</span>
+                        </div>
+                      </td>
+                      <td class="service-name" data-label="Service Type">Document Requisition</td>
+                      <td class="date-cell" data-label="Date Filed">Oct 05, 2026</td>
+                      <td data-label="Status">
+                        <span class="status-pill pill-approved">
+                          <span class="status-dot"></span> Approved
+                        </span>
+                      </td>
+                      <td data-label="Actions">
+                        <div class="row-action-cell">
+                          <button type="button" class="btn-row-view" aria-label="View request DSSC-2026-0075">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>View</span>
+                            <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+
+                    <!-- Row 5: Processing -->
+                    <tr data-id="DSSC-2026-0069" data-type="Certificate of Enrollment" data-date="Sep 28, 2026" data-status="Processing">
+                      <td data-label="Request ID">
+                        <div class="req-id-cell">
+                          <span class="row-type-icon" aria-hidden="true">🪪</span>
+                          <span class="id-code">DSSC-2026-0069</span>
+                        </div>
+                      </td>
+                      <td class="service-name" data-label="Service Type">Certificate of Enrollment</td>
+                      <td class="date-cell" data-label="Date Filed">Sep 28, 2026</td>
+                      <td data-label="Status">
+                        <span class="status-pill pill-processing">
+                          <span class="status-dot"></span> Processing
+                        </span>
+                      </td>
+                      <td data-label="Actions">
+                        <div class="row-action-cell">
+                          <button type="button" class="btn-row-view" aria-label="View request DSSC-2026-0069">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                              <circle cx="12" cy="12" r="3"/>
+                            </svg>
+                            <span>View</span>
+                            <span class="chevron" aria-hidden="true">&rsaquo;</span>
+                          </button>
+                          <div class="admin-inline-actions" hidden>
+                            <button type="button" class="btn-adm-approve" title="Approve this request">Approve</button>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <!-- Table Footer with Showing count & Pagination Controls -->
+              <div class="table-foot-bar">
+                <div class="showing-count" id="showingCountText">
+                  <span class="info-circle" aria-hidden="true">ⓘ</span>
+                  <span>Showing <strong id="showingRowsCount">5</strong> of <strong id="totalRowsCount">5</strong> requests</span>
+                </div>
+                <div class="pagination-controls" aria-label="Table pagination">
+                  <button type="button" class="page-nav-btn" id="prevPageBtn" disabled aria-label="Previous page">&lsaquo;</button>
+                  <button type="button" class="page-number-btn active" id="page1Btn" aria-current="page">1</button>
+                  <button type="button" class="page-number-btn" id="page2Btn" aria-label="Page 2">2</button>
+                  <button type="button" class="page-nav-btn" id="nextPageBtn" aria-label="Next page">&rsaquo;</button>
+                </div>
+              </div>
+
+            </section>
+          </div>
+
+          <!-- ----------------------------------------------------------------
+               RIGHT COLUMN (Request a Service Form & Help Widget)
+               ---------------------------------------------------------------- -->
+          <aside class="dashboard-side-col" id="service-form-card" aria-label="Service Request Submission">
+
+            <!-- Request a Service Form Card -->
+            <section class="content-card form-card">
+              
+              <!-- Card Header -->
+              <div class="form-card-head">
+                <div class="plus-circle-icon" aria-hidden="true">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                </div>
+                <div>
+                  <h2 class="card-title-text">Request a Service</h2>
+                  <p class="card-subtitle-text">Submit a new service request and we'll process it as soon as possible.</p>
+                </div>
+              </div>
+
+              <!-- Success Alert Message -->
+              <div class="alert-box-modern alert-success" id="formSuccessMessage" role="status" aria-live="polite" hidden>
+                <div class="alert-icon-wrap" aria-hidden="true">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="20 6 9 17 4 12"/>
+                  </svg>
+                </div>
+                <div class="alert-content">
+                  <p class="alert-heading">Request Submitted Successfully!</p>
+                  <p class="alert-sub" id="successDetailText">Your request has been filed for processing.</p>
+                </div>
+              </div>
+
+              <!-- The Form (Accessible WCAG 2.1 AA Compliant with Explicit Labels & Helper Texts) -->
+              <form class="service-request-form" id="serviceRequestForm" novalidate>
+                
+                <!-- Field 1: Service Category Dropdown -->
+                <div class="form-field-group">
+                  <label for="serviceCategory" class="field-label" id="serviceCategory-label">
+                    Service Category <span class="asterisk" aria-hidden="true">*</span>
+                  </label>
+                  <div class="select-wrapper">
+                    <select 
+                      id="serviceCategory" 
+                      name="serviceCategory" 
+                      class="field-input field-select" 
+                      aria-describedby="serviceCategory-help categoryError" 
+                      aria-required="true"
+                      required>
+                      <option value="">Select a service category</option>
+                      <option value="Document Requisition">Document Requisition</option>
+                      <option value="Certificate of Enrollment">Certificate of Enrollment</option>
+                      <option value="Transcript of Records Request">Transcript of Records Request</option>
+                      <option value="Subject Overload Permit">Subject Overload Permit</option>
+                    </select>
+                  </div>
+                  <small class="field-help-text" id="serviceCategory-help">Choose the official DSSC service or document you require.</small>
+                  <p class="error-msg" id="categoryError" aria-live="assertive" hidden></p>
+                </div>
+
+                <!-- Field 2: Request Details Textarea -->
+                <div class="form-field-group">
+                  <label for="requestDetails" class="field-label" id="requestDetails-label">
+                    Request Details <span class="asterisk" aria-hidden="true">*</span>
+                  </label>
+                  <textarea 
+                    id="requestDetails" 
+                    name="requestDetails" 
+                    rows="4" 
+                    maxlength="500"
+                    class="field-input field-textarea" 
+                    placeholder="Provide a brief description of your request (minimum 10 characters)..."
+                    aria-describedby="requestDetails-help detailsError charCounter"
+                    aria-required="true"
+                    required></textarea>
+                  <small class="field-help-text" id="requestDetails-help">Provide clear academic reasons, subject codes, or purpose for processing.</small>
+                  <div class="textarea-bottom-row">
+                    <p class="error-msg" id="detailsError" aria-live="assertive" hidden></p>
+                    <span class="char-count" id="charCounter" aria-live="polite">0/500</span>
+                  </div>
+                </div>
+
+                <!-- Field 3: Supporting Document (Optional) -->
+                <div class="form-field-group">
+                  <label for="supportingDoc" class="field-label" id="supportingDoc-label">
+                    Supporting Document <span class="optional-tag">(Optional)</span>
+                  </label>
+                  <div class="file-upload-box">
+                    <input 
+                      type="file" 
+                      id="supportingDoc" 
+                      name="supportingDoc" 
+                      class="file-input" 
+                      accept=".pdf,.jpg,.jpeg,.png"
+                      aria-describedby="supportingDoc-help">
+                    <label for="supportingDoc" class="file-upload-label" id="supportingDoc-filelabel">
+                      <span class="choose-file-btn">Choose File</span>
+                      <span class="chosen-filename" id="chosenFileName">No file chosen</span>
+                    </label>
+                  </div>
+                  <small class="file-help-text" id="supportingDoc-help">Accepted formats: PDF, JPG, PNG (Max size: 5MB)</small>
+                </div>
+
+                <!-- Form Action Buttons -->
+                <div class="form-button-row">
+                  <button type="submit" class="btn-submit" id="submitBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <line x1="22" y1="2" x2="11" y2="13"/>
+                      <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                    <span>Submit Request</span>
+                  </button>
+                  <button type="reset" class="btn-reset" id="resetBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                      <polyline points="23 4 23 10 17 10"/>
+                      <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/>
+                    </svg>
+                    <span>Reset</span>
+                  </button>
+                </div>
+
+              </form>
+            </section>
+
+            <!-- Need Help? Informational Card with Interactive Guide Trigger -->
+            <div class="content-card help-card" id="helpCardWidget" role="button" tabindex="0" aria-label="Open Student Services Help & Support">
+              <div class="help-icon-circle" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M9 18h6"/>
+                  <path d="M10 22h4"/>
+                  <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5A4.61 4.61 0 0 1 8.91 14"/>
+                </svg>
+              </div>
+              <div class="help-text-content">
+                <h3 class="help-heading">Need help?</h3>
+                <p class="help-desc">Make sure to provide complete and accurate information to avoid delays.</p>
+                <button type="button" class="btn-help-link" id="helpModalBtn">View Support FAQs &amp; Contacts &rarr;</button>
+              </div>
+            </div>
+
+          </aside>
+
+        </div><!-- End .dashboard-layout-grid -->
+
+      </main>
+
+      <!-- Portal Footer -->
+      <footer class="app-footer">
+        <div class="footer-left">
+          <span>Davao del Sur State College</span>
+          <span class="footer-divider">|</span>
+          <span>Student Services Portal</span>
+        </div>
+        <div class="footer-right">
+          <span>&copy; 2026 DSSC. All rights reserved.</span>
+        </div>
+      </footer>
+
+    </div><!-- End .main-wrapper -->
+
+  </div><!-- End .app-layout -->
+
+  <!-- ======================================================================
+       3. MODAL: VIEW REQUEST DETAILS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="viewRequestModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id" id="modalReqId">DSSC-2026-0104</span>
+          <h2 class="modal-title" id="modalTitle">Request Details</h2>
+        </div>
+        <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-detail-row">
+          <span class="detail-label">Service Type:</span>
+          <span class="detail-value" id="modalServiceType">Transcript of Records Request</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="detail-label">Date Filed:</span>
+          <span class="detail-value" id="modalDateFiled">Oct 24, 2026</span>
+        </div>
+        <div class="modal-detail-row">
+          <span class="detail-label">Current Status:</span>
+          <span class="detail-value" id="modalStatusBadge">
+            <span class="status-pill pill-pending"><span class="status-dot"></span> Pending</span>
+          </span>
+        </div>
+        <div class="modal-detail-row full-width">
+          <span class="detail-label">Purpose / Notes:</span>
+          <p class="detail-notes" id="modalNotes">Submitted for academic records evaluation and employment requirements.</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-modal" id="modalPrintBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+          <span>Print Slip</span>
+        </button>
+        <button type="button" class="btn-secondary-modal" id="modalDismissBtn">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       4. MODAL: ACADEMIC STATUS & ENROLLED SUBJECTS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="academicStatusModal" role="dialog" aria-modal="true" aria-labelledby="academicModalTitle" style="display: none;">
+    <div class="modal-dialog modal-dialog-lg">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id">AY 2026-2027 &bull; 1st Semester</span>
+          <h2 class="modal-title" id="academicModalTitle">Academic &amp; Enrollment Status</h2>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="academicStatusModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-info-strip">
+          <div>
+            <strong>Juan Dela Cruz Santos</strong> (ID: 2024-00124)
+            <div class="strip-meta">Bachelor of Science in Information Technology (BSIT) - 3rd Year</div>
+          </div>
+          <div class="strip-badge-wrap">
+            <span class="status-pill pill-approved"><span class="status-dot"></span> Officially Enrolled</span>
+          </div>
+        </div>
+
+        <div class="academic-stats-row">
+          <div class="stat-pill-box">
+            <span class="stat-pill-label">Total Units Enrolled</span>
+            <span class="stat-pill-val">21 Units</span>
+          </div>
+          <div class="stat-pill-box">
+            <span class="stat-pill-label">Academic Standing</span>
+            <span class="stat-pill-val text-success">Good Standing</span>
+          </div>
+          <div class="stat-pill-box">
+            <span class="stat-pill-label">Cumulative GWA</span>
+            <span class="stat-pill-val">1.45 (Dean's List)</span>
+          </div>
+        </div>
+
+        <h3 class="modal-subheading">Enrolled Subjects &amp; Class Schedule</h3>
+        <div class="table-container-modal">
+          <table class="modal-data-table">
+            <thead>
+              <tr>
+                <th scope="col">Course Code</th>
+                <th scope="col">Descriptive Title</th>
+                <th scope="col">Units</th>
+                <th scope="col">Schedule</th>
+                <th scope="col">Room / Lab</th>
+                <th scope="col">Instructor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>IT631</strong></td>
+                <td>Advanced Web Application Development</td>
+                <td>3.0</td>
+                <td>MWF 8:00 - 9:00 AM</td>
+                <td>IT Lab 3</td>
+                <td>Prof. R. Dela Cruz</td>
+              </tr>
+              <tr>
+                <td><strong>IT632</strong></td>
+                <td>Information Assurance and Security 1</td>
+                <td>3.0</td>
+                <td>TTh 9:00 - 10:30 AM</td>
+                <td>Room 204</td>
+                <td>Engr. M. Bautista</td>
+              </tr>
+              <tr>
+                <td><strong>IT633</strong></td>
+                <td>Systems Integration and Architecture</td>
+                <td>3.0</td>
+                <td>MWF 10:00 - 11:00 AM</td>
+                <td>IT Lab 2</td>
+                <td>Prof. J. Santos</td>
+              </tr>
+              <tr>
+                <td><strong>IT634</strong></td>
+                <td>Mobile Application Development</td>
+                <td>3.0</td>
+                <td>TTh 1:00 - 2:30 PM</td>
+                <td>IT Lab 1</td>
+                <td>Prof. E. Villanueva</td>
+              </tr>
+              <tr>
+                <td><strong>IT635</strong></td>
+                <td>Capstone Project and Research 1</td>
+                <td>3.0</td>
+                <td>Sat 8:00 - 11:00 AM</td>
+                <td>Room 301</td>
+                <td>Dr. C. Mendoza</td>
+              </tr>
+              <tr>
+                <td><strong>GE108</strong></td>
+                <td>Ethics</td>
+                <td>3.0</td>
+                <td>MWF 1:00 - 2:00 PM</td>
+                <td>Room 105</td>
+                <td>Prof. A. Alcantara</td>
+              </tr>
+              <tr>
+                <td><strong>GE109</strong></td>
+                <td>The Contemporary World</td>
+                <td>3.0</td>
+                <td>TTh 3:00 - 4:30 PM</td>
+                <td>Room 108</td>
+                <td>Prof. V. Ramos</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-modal" id="printCorBtn">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="6 9 6 2 18 2 18 9"/>
+            <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+            <rect x="6" y="14" width="12" height="8"/>
+          </svg>
+          <span>Print Certificate of Registration (COR)</span>
+        </button>
+        <button type="button" class="btn-secondary-modal" data-close-modal="academicStatusModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       5. MODAL: INSTITUTIONAL CLEARANCE STATUS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="clearanceModal" role="dialog" aria-modal="true" aria-labelledby="clearanceModalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id" style="background-color: #FEF2F2; color: #DC2626;">2 Deficiencies Pending</span>
+          <h2 class="modal-title" id="clearanceModalTitle">Institutional Clearance Status</h2>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="clearanceModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="modal-intro-text">Track your clearances across academic and administrative departments for 1st Semester AY 2026-2027.</p>
+        
+        <div class="clearance-checklist">
+          <!-- Item 1: Registrar -->
+          <div class="clearance-item status-in-progress">
+            <div class="clearance-icon" aria-hidden="true">⏳</div>
+            <div class="clearance-details">
+              <strong>Office of the University Registrar</strong>
+              <p>Form 137 / PSA Birth Certificate validation in process.</p>
+            </div>
+            <span class="status-pill pill-processing"><span class="status-dot"></span> In Progress</span>
+          </div>
+
+          <!-- Item 2: Library -->
+          <div class="clearance-item status-cleared">
+            <div class="clearance-icon" aria-hidden="true">✅</div>
+            <div class="clearance-details">
+              <strong>College Library Services</strong>
+              <p>No overdue book loans or library fines recorded.</p>
+            </div>
+            <span class="status-pill pill-approved"><span class="status-dot"></span> Cleared</span>
+          </div>
+
+          <!-- Item 3: SAS -->
+          <div class="clearance-item status-cleared">
+            <div class="clearance-icon" aria-hidden="true">✅</div>
+            <div class="clearance-details">
+              <strong>Student Affairs &amp; Services (SAS)</strong>
+              <p>Institutional orientation &amp; student handbook compliance cleared.</p>
+            </div>
+            <span class="status-pill pill-approved"><span class="status-dot"></span> Cleared</span>
+          </div>
+
+          <!-- Item 4: IT Lab -->
+          <div class="clearance-item status-deficient">
+            <div class="clearance-icon" aria-hidden="true">⚠️</div>
+            <div class="clearance-details">
+              <strong>IT Department Laboratories</strong>
+              <p>Deficiency: Return IT631 IoT Microcontroller kit to Lab 3 custodian.</p>
+            </div>
+            <span class="status-pill pill-pending" style="background-color: #FEE2E2; color: #B91C1C;"><span class="status-dot" style="background-color: #DC2626;"></span> Deficient</span>
+          </div>
+        </div>
+
+        <div class="clearance-notice-box">
+          <strong>Notice to Students:</strong> Please clear all pending laboratory equipment deficiencies prior to final exam clearance signing.
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-modal" id="requestRecheckBtn">Request Clearance Re-check</button>
+        <button type="button" class="btn-secondary-modal" data-close-modal="clearanceModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       6. MODAL: PORTAL & ACCOUNT SETTINGS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="settingsModal" role="dialog" aria-modal="true" aria-labelledby="settingsModalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id">Preferences &bull; DSSC Portal</span>
+          <h2 class="modal-title" id="settingsModalTitle">Portal &amp; Account Settings</h2>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="settingsModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="settingsForm" class="settings-form" onsubmit="event.preventDefault();">
+          <h3 class="modal-subheading">Notification Preferences</h3>
+          <div class="setting-toggle-row">
+            <div>
+              <strong>SMS Request Status Alerts</strong>
+              <p class="setting-desc">Receive instant text updates when a request is approved.</p>
+            </div>
+            <label class="switch-toggle" for="smsToggle">
+              <input type="checkbox" id="smsToggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="setting-toggle-row">
+            <div>
+              <strong>Email Notifications</strong>
+              <p class="setting-desc">Send official copies and clearance digests to your student email.</p>
+            </div>
+            <label class="switch-toggle" for="emailToggle" style="margin-left:auto;">
+              <input type="checkbox" id="emailToggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <div class="setting-toggle-row">
+            <div>
+              <strong>High Contrast Focus Indicators</strong>
+              <p class="setting-desc">Enhance button outlines for keyboard accessibility.</p>
+            </div>
+            <label class="switch-toggle" for="contrastToggle" style="margin-left:auto;">
+              <input type="checkbox" id="contrastToggle" checked>
+              <span class="slider round"></span>
+            </label>
+          </div>
+
+          <h3 class="modal-subheading" style="margin-top: 1rem;">Security &amp; Password</h3>
+          <div class="form-field-group">
+            <label for="currentPassInput" class="field-label">Current Password</label>
+            <input type="password" id="currentPassInput" class="field-input" placeholder="Enter current password">
+          </div>
+          <div class="form-field-group">
+            <label for="newPassInput" class="field-label">New Password</label>
+            <input type="password" id="newPassInput" class="field-input" placeholder="Enter new password">
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-modal" id="saveSettingsBtn">Save Changes</button>
+        <button type="button" class="btn-secondary-modal" data-close-modal="settingsModal">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       7. MODAL: STUDENT PROFILE DETAILS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="userProfileModal" role="dialog" aria-modal="true" aria-labelledby="profileModalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id">Official Student Record</span>
+          <h2 class="modal-title" id="profileModalTitle">Student Profile</h2>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="userProfileModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="profile-hero">
+          <div class="avatar-circle-lg">JS</div>
+          <div>
+            <h3 class="profile-hero-name">Juan Dela Cruz Santos</h3>
+            <span class="profile-hero-id">Student ID: 2024-00124</span>
+          </div>
+        </div>
+
+        <div class="profile-meta-grid">
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Program &amp; Department</span>
+            <span class="p-meta-val">BS Information Technology (IT Dept)</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Year Level &amp; Section</span>
+            <span class="p-meta-val">3rd Year &bull; Section A (Regular)</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Institutional Email</span>
+            <span class="p-meta-val">juan.santos@dssc.edu.ph</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Campus</span>
+            <span class="p-meta-val">DSSC Digos Main Campus</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Enrollment Status</span>
+            <span class="p-meta-val text-success">Officially Enrolled (21 Units)</span>
+          </div>
+          <div class="profile-meta-item">
+            <span class="p-meta-label">Clearance Standing</span>
+            <span class="p-meta-val text-warning">2 Deficiencies Pending</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-primary-modal" id="profileAcademicBtn">View Academic Schedule</button>
+        <button type="button" class="btn-secondary-modal" data-close-modal="userProfileModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       8. MODAL: STUDENT SERVICES HELP & FAQS
+       ====================================================================== -->
+  <div class="modal-backdrop" id="helpModal" role="dialog" aria-modal="true" aria-labelledby="helpModalTitle" style="display: none;">
+    <div class="modal-dialog">
+      <div class="modal-header">
+        <div class="modal-title-group">
+          <span class="modal-badge-id">Support &amp; Assistance</span>
+          <h2 class="modal-title" id="helpModalTitle">Student Services Help Desk</h2>
+        </div>
+        <button type="button" class="modal-close-btn" data-close-modal="helpModal" aria-label="Close dialog">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="faq-accordion">
+          <details class="faq-item" open>
+            <summary class="faq-summary">How long does Document Requisition take?</summary>
+            <p class="faq-answer">Certificates of Enrollment and Good Moral Characters are typically released within 1 to 2 working days. Official Transcripts of Records (TOR) take 3 to 5 working days upon document validation.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">How do I submit a Subject Overload request?</summary>
+            <p class="faq-answer">Subject overload permits are granted strictly to graduating students or those with special curriculum sequencing. Select 'Subject Overload Permit' on the Request Form and describe your subjects and reasons.</p>
+          </details>
+          <details class="faq-item">
+            <summary class="faq-summary">What should I do if my clearance shows a deficiency?</summary>
+            <p class="faq-answer">Visit the indicated office (e.g., College Library or IT Lab 3 custodian) with your student ID to settle your loan, return equipment, or submit missing requirements.</p>
+          </details>
+        </div>
+
+        <div class="support-contact-box">
+          <strong>Need further assistance?</strong>
+          <p>Office of the University Registrar: <a href="mailto:registrar@dssc.edu.ph">registrar@dssc.edu.ph</a></p>
+          <p>Office Hours: Monday &ndash; Friday, 8:00 AM &ndash; 5:00 PM</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn-secondary-modal" data-close-modal="helpModal">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
