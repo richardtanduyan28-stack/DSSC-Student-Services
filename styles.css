@@ -31,17 +31,17 @@
   --text-placeholder: #94A3B8;
 
   /* Status Badge Colors */
-  --status-pending-bg: #FEF3C7;
-  --status-pending-text: #B45309;
-  --status-pending-dot: #D97706;
+  --status-pending-bg: #EFF6FF;
+  --status-pending-text: #1D4ED8;
+  --status-pending-dot: #2563EB;
 
   --status-proc-bg: #EFF6FF;
   --status-proc-text: #1D4ED8;
   --status-proc-dot: #2563EB;
 
-  --status-appr-bg: #DCFCE7;
-  --status-appr-text: #15803D;
-  --status-appr-dot: #16A34A;
+  --status-appr-bg: #EFF6FF;
+  --status-appr-text: #1D4ED8;
+  --status-appr-dot: #2563EB;
 
   /* Layout Constants */
   --sidebar-width: 260px;
@@ -674,7 +674,7 @@ body {
 
 .bubble-yellow {
   background-color: transparent;
-  color: #D97706;
+  color: var(--primary-blue);
 }
 
 /* Card 3: Clearance Deficiencies (Red/Pink Theme) */
@@ -684,7 +684,7 @@ body {
 
 .bubble-red {
   background-color: transparent;
-  color: #DC2626;
+  color: var(--primary-blue);
 }
 
 /* Admin Notice Pill - ONLY shown in Admin Mode */
@@ -1585,8 +1585,8 @@ body.admin-mode .admin-inline-actions {
   color: var(--text-heading);
 }
 
-.text-success { color: #16A34A !important; }
-.text-warning { color: #D97706 !important; }
+.text-success,
+.text-warning { color: var(--primary-blue) !important; }
 
 /* Modal Data Table */
 .table-container-modal {
@@ -2125,19 +2125,35 @@ body.admin-mode .admin-inline-actions {
     padding: 1.25rem 1rem;
   }
 
-  /* Modal responsiveness */
+}
+
+@media (max-width: 767px), (max-height: 600px) {
+  .modal-backdrop {
+    height: 100dvh;
+  }
+
   .modal-dialog {
     max-width: 100%;
     margin: 0.5rem;
     max-height: calc(100vh - 2rem);
     max-height: calc(100dvh - 2rem);
+    min-height: 0;
     display: flex;
     flex-direction: column;
   }
 
+  .modal-header,
+  .modal-footer {
+    flex: 0 0 auto;
+  }
+
   .modal-body {
+    flex: 1 1 auto;
+    min-height: 0;
     overflow-y: auto;
-    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    touch-action: pan-y;
   }
 }
 

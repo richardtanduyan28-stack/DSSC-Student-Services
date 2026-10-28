@@ -973,7 +973,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const modalPrintBtn = document.getElementById("modalPrintBtn");
   if (modalPrintBtn) {
     modalPrintBtn.addEventListener("click", () => {
-      closeModalById("academicStatusModal");
+      closeModal();
       showToast("Preparing record for printing.", "info");
       setTimeout(() => window.print(), 600);
     });
@@ -982,7 +982,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const printCorBtn = document.getElementById("printCorBtn");
   if (printCorBtn) {
     printCorBtn.addEventListener("click", () => {
-      closeModalById("clearanceModal");
+      closeModalById("academicStatusModal");
       showToast("Preparing registration certificate.", "info");
       setTimeout(() => window.print(), 600);
     });
